@@ -11,6 +11,7 @@
         <?php include('./view/horizontal_nav_bar.php');?>
         <main>
             <section>
+                <p>Calorie Goal:</p>
                 <div></div>
             </section>
         </main>
