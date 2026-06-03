@@ -17,7 +17,7 @@
                     <p class="first_child_p">34</p>
                     <p class="second_child_p">100</p>
                     <ul class = "third_child_ul">
-                        <li><a href="/CalorieTracker/index.php?action=create_calorie_goal">Create Calorie Goal</a></li>
+                        <li><a href="./index.php?action=create_calorie_goal">Create Calorie Goal</a></li>
                     </ul>
                 </div>
                 
