@@ -1,4 +1,4 @@
 <!DOCTYPE html>
 <?php
-header("Location: CalorieTracker/index.php");
+header("Location: ./index.php");
 exit;

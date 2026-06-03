@@ -117,7 +117,7 @@ section div div{
     height: 50px;
     border: 2px solid black;
     border-radius: 8px;
-    background-image: linear-gradient(90deg, #81c979 50%, #413d47 50%);
+    background-image: linear-gradient(90deg, #81c979 34%, #413d47 34%);
     margin: 0 auto;
     margin-bottom: 80px;
 }
@@ -158,6 +158,43 @@ section div div{
     text-decoration: underline;
     font-weight: bold;
     margin-bottom: 8px;
+}
+
+.food_history + p{
+    display: inline-block;
+    margin-left: 65px;
+    text-decoration: underline;
+}
+
+.food_history + p + p{
+    display: inline-block;
+    margin-left: 120px;
+    text-decoration: underline;
+}
+
+.food_history + p + p + p{
+    float: right;
+    display: inline-block;
+    margin-right: 65px;
+    text-decoration: underline;
+}
+
+.food{
+    display: inline-block;
+    margin-left: 65px;
+}
+
+.quantity{
+    display: inline-block;
+    position: absolute;
+    left: 400px;
+    
+}
+
+.calories{
+    float: right;
+    margin-right: 65px;
+    display: inline-block;
 }
 /*styles for footer*/
 footer{
