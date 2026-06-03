@@ -37,7 +37,7 @@ body{
 }
 
 /*styles for nav*/
-nav ul{
+ul{
     padding: 0;
     list-style: none;
     position: relative;
@@ -52,7 +52,6 @@ nav ul li{
     position: relative;
     display: block;
     width:  266.666666667px;
-    color: white;
     background-color: #45464d;
     border-bottom: 2px solid black;
     text-decoration: none;
@@ -93,28 +92,73 @@ main ul{
 } 
 
 section{
+    position: relative;
     margin-top: 10px;
     width: 800px;
     float: left;
 }
-
 section p{
-    margin: 0 auto;
-    width: 80%;
     font-size: 30px;
     color: #e2e1e1;
 }
 
-section div{
+section p:first-child{
+    width: 80%;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+section div:first-child{
+    position: relative;
+}
+
+section div div{
     width: 80%;
     height: 50px;
     border: 2px solid black;
     border-radius: 8px;
     background-image: linear-gradient(90deg, #81c979 50%, #413d47 50%);
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 80px;
 }
 
+.first_child_p{
+    position: absolute;
+    bottom: -32px;
+    left: 80px;
+}
+
+.second_child_p{
+    position: absolute;
+    bottom: -32px;
+    right: 80px;
+}
+
+.third_child_ul{
+    position: absolute;
+    display: block;
+    bottom: -48px;
+    left: 310px;
+    text-align: center;
+    width:  180px;
+    height: 40px;
+    background-color: #45464d;
+    border: 2px solid black;
+    text-decoration: none;
+    list-style: none;
+}
+.third_child_ul li a{
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 6px;
+}
+
+.food_history{
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
 /*styles for footer*/
 footer{
     clear: both;
@@ -125,6 +169,7 @@ footer{
 
 footer{
     font-size: 90%;
+    color: #e2e1e1;
 }
 
 footer div{
