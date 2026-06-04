@@ -8,6 +8,8 @@ def normalize_food_list(search_response):
     """
     foods = []
     items = search_response.get("foods", {}).get("food", []) or []
+    if isinstance(items, dict):
+        items = [items]
     cal_re = re.compile(r"Calories:\s*([\d.]+)\s*kcal", re.IGNORECASE)
 
     for f in items:
