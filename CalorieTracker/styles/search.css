@@ -70,3 +70,34 @@ section form p{
 label, input {
     vertical-align: middle;
 }
+
+#search-results {
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+.food-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    margin-bottom: 8px;
+    background-color: #45464d;
+    border-radius: 4px;
+    color: #e2e1e1;
+}
+
+.food-name {
+    font-size: 18px;
+}
+
+.food-calories {
+    font-size: 18px;
+    color: #bcc4cf;
+}
+
+.search-status {
+    color: #bcc4cf;
+    font-size: 18px;
+    margin-left: 20px;
+}

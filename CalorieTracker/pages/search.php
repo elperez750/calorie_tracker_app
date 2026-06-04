@@ -25,6 +25,7 @@
                     <input class="submitButton" type='submit' id='submit_search' value='submit'>
                 </form>
             </section>
+            <div id="search-results"></div>
         </main>
         <script src="./scripts/APIcall.js"></script>
         <?php include('./view/footer.php');?>
