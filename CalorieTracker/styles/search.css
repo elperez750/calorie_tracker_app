@@ -1,0 +1,72 @@
+section{
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+label{
+    font-size: 30px;
+    color: #e2e1e1;
+    margin-left: 140px;
+}
+
+.minCalLabel{
+    position: absolute;
+    transform: translateY(-45px);
+    left:25px;
+}
+
+.minCalInputBox{
+    position: absolute;
+    transform: translateY(-50px);
+    left: 248px;
+    height: 40px;
+    width: 50px;
+}
+
+section form p{
+    position: absolute;
+    transform: translateY(-45px);
+    left: 320px;
+}
+
+.maxCalInputBox{
+    position: absolute;
+    transform: translateY(-50px);
+    left: 365px;
+    height: 40px;
+    width: 50px;
+}
+
+.maxCalLabel{
+    position: absolute;
+    transform: translateY(-45px);
+    left:295px;
+}
+
+.searchInputBox{
+    font-size: 15px;
+    height: 30px;
+    width: 300px;
+}
+
+.submitButton{
+    display: inline-block;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 6px;
+    text-align: center;
+    width:  80px;
+    background-color: #45464d;
+    border: 2px solid black;
+    margin-left: 10px;
+    color: #bcc4cf;
+}
+
+.submitButton:hover, a:focus{
+    background-color: lightblue;
+    color:#2880b9;
+}
+
+label, input {
+    vertical-align: middle;
+}
