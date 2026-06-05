@@ -12,7 +12,7 @@
         <?php include('./view/horizontal_nav_bar.php');?>
         <main>
             <section>
-                <form action="./index.php?action=search_food" method='POST' name='search_food'>
+                <form>
                     <label class="minCalLabel" for='minCal'>From:</label>
                     <input class="minCalInputBox" type='number' id='minCal' name='minCal' min=0 max=50000>
                     <p>to</p>
