@@ -207,7 +207,7 @@ section div div{
     width: 100px;
 }
 
-section .button:hover, a:focus{
+.button:hover, a:focus{
     background-color: lightblue;
     color:#2880b9;
 }

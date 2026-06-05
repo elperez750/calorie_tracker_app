@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const html = foods.map(f => `
             <div class="food-result">
-                <a class="button addTo" href="./index.php?action=add_to_goal&food_name=${escapeHtml(f.food_name)}&calories=${f.calories !== null ? f.calories: null}">Add to Goal</a>
+                <a class="button addTo" href="./index.php?action=add_to_goal&food_name=${encodeURIComponent(f.food_name)}&calories=${f.calories !== null ? f.calories : 0}">Add to Goal</a>
                 <span class="food-name">${escapeHtml(f.food_name)}</span>
-                <span class="food-calories">${f.calories !== null ? f.calories + ' cal' : 'N/A'}</span>
+                <span class="food-calories">${f.calories !== null ? f.calories + ' cal' : 0}</span>
             </div>
         `).join('');
 
