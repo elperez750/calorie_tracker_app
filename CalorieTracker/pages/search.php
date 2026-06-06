@@ -26,10 +26,28 @@
                     <input class="submitButton" type='submit' id='submit_search' value='submit'>
                 </form>
             </section>
+
+            <div id="recent-foods-section" class="recent-foods-section"<?php echo empty($recently_eaten) ? ' hidden' : ''; ?>>
+                <h2 class="recent-foods-title">Recently Eaten</h2>
+                <p class="recent-foods-note">Quickly add foods you have logged before.</p>
+                <div id="recent-foods-list">
+                    <?php foreach ($recently_eaten as $food): ?>
+                        <?php
+                            $food_name = $food['food_name'];
+                            $calories_per_serving = $food['calories_per_serving'];
+                            $serving_size = $food['serving_size'] ?? '';
+                            $food_item_id = $food['food_item_id'] ?? '';
+                            $image_url = $food['image_url'] ?? null;
+                            $category = '';
+                            include('./view/food_result_row.php');
+                        ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
             <div id="search-results"></div>
         </main>
         <script src="./scripts/APIcall.js"></script>
         <?php include('./view/footer.php');?>
     </body>
 </html>
-

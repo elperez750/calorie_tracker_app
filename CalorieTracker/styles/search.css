@@ -36,6 +36,7 @@ section form p {
     height: 36px;
     width: 300px;
     max-width: 100%;
+    flex: 1 1 200px;
 }
 
 .submitButton {
@@ -52,16 +53,57 @@ section form p {
     color: #2880b9;
 }
 
-label, input {
+label,
+input {
     vertical-align: middle;
 }
 
+.recent-foods-section,
 #search-results {
     padding: 0 24px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.recent-foods-section {
+    margin-bottom: 8px;
+}
+
+.recent-foods-title,
+.search-results-title {
+    font-size: 1.35rem;
+    color: #e2e1e1;
+    margin-bottom: 6px;
+    text-decoration: underline;
+}
+
+.recent-foods-note {
+    font-size: 0.95rem;
+    color: #bcc4cf;
+    margin-bottom: 12px;
+}
+
+.food-result .food-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid black;
+    display: block;
+}
+
+.food-result .food-thumb-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #81c979, #564863);
+    color: #e2e1e1;
+    font-weight: bold;
 }
 
 .food-result {
-    display: flex;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr) auto auto auto;
     align-items: center;
     gap: 12px;
     padding: 12px 16px;
@@ -69,58 +111,193 @@ label, input {
     background-color: #45464d;
     border-radius: 4px;
     color: #e2e1e1;
+    border: 2px solid transparent;
 }
 
-/* override main.css which sets position: absolute on .addTo.button */
+.add-food-form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.servings-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    color: #e2e1e1;
+    margin: 0;
+}
+
+.servings-text {
+    white-space: nowrap;
+}
+
+.servings-input {
+    width: 72px;
+    height: 36px;
+    padding: 4px 8px;
+    font-size: 1rem;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: #413d47;
+    color: #e2e1e1;
+}
+
+.food-result:hover {
+    border-color: #56585f;
+}
+
 .button.addTo {
     position: static;
     transform: none;
     flex: 0 0 auto;
-    padding: 6px 12px;
+    padding: 8px 12px;
     width: auto;
+    min-width: 110px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: #45464d;
+    font-family: inherit;
+    font-weight: bold;
 }
 
 .food-name {
-    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.125rem;
+    text-align: left;
+}
+
+.food-serving-size {
+    font-size: 0.95rem;
+    color: #bcc4cf;
+    white-space: nowrap;
+    min-width: 64px;
     text-align: center;
-    font-size: 18px;
 }
 
 .food-calories {
     flex: 0 0 auto;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #bcc4cf;
-    min-width: 80px;
+    min-width: 72px;
     text-align: right;
+    white-space: nowrap;
 }
 
 .search-status {
     color: #bcc4cf;
     font-size: 18px;
     padding: 10px;
+    line-height: 1.5;
+}
+
+.search-status-error {
+    color: #f0b0b0;
+    font-size: 1rem;
+    padding: 12px 14px;
+    line-height: 1.5;
+    background-color: #5a3a3a;
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+.search-status-warn {
+    color: #e8d9a0;
+    font-size: 1rem;
+    padding: 12px 14px;
+    line-height: 1.5;
+    background-color: #4a4638;
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 16px;
+    }
+
+    #search-results {
+        padding: 0 16px 20px;
+    }
+
+    label {
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 600px) {
     section form {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
     }
 
     .searchInputBox {
         width: 100%;
     }
 
+    .submitButton {
+        width: 100%;
+    }
+
     .food-result {
-        flex-wrap: wrap;
+        grid-template-columns: 44px 1fr auto;
+        grid-template-areas:
+            "img name calories"
+            "img serving serving"
+            "form form form";
+        gap: 8px 12px;
+        padding: 14px;
+    }
+
+    .food-col-img {
+        grid-area: img;
+    }
+
+    .food-serving-size {
+        grid-area: serving;
+        text-align: left;
+    }
+
+    .food-serving-size::before {
+        content: "Serving: ";
+        color: #e2e1e1;
+        font-weight: bold;
+    }
+
+    .add-food-form {
+        grid-area: form;
+        width: 100%;
+        justify-content: space-between;
     }
 
     .food-name {
-        text-align: left;
-        width: 100%;
-        order: -1;
+        grid-area: name;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        font-weight: bold;
     }
 
     .food-calories {
+        grid-area: calories;
         min-width: auto;
+    }
+
+    .button.addTo {
+        flex: 1 1 auto;
+        min-width: 120px;
+    }
+
+    .servings-input {
+        width: 80px;
     }
 }

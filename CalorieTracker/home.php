@@ -12,41 +12,81 @@
         <?php include('./view/horizontal_nav_bar.php');?>
         <main>
             <section>
-                <div class="parent_div">
-                    <p>Calorie Goal:</p>
+                <div class="calorie-goal-block" data-calorie-goal="<?php echo $calorie_goal; ?>">
+                    <p class="calorie-goal-label">Calorie Goal:</p>
                     <?php
-                        if($calorie_goal > 0){
-                            $caloriePercent = (289/$calorie_goal) * 100;
-                        }else{
+                        if ($calorie_goal > 0) {
+                            $caloriePercent = min(100, ($total_calories / $calorie_goal) * 100);
+                        } else {
                             $caloriePercent = 0;
                         }
                     ?>
-                    <div style="background-image: linear-gradient(90deg, #81c979 <?php echo $caloriePercent; ?>%, #413d47 <?php echo $caloriePercent; ?>%);"></div>
-                    <p class="first_child_p">289</p>
-                    <p class="second_child_p"><?php echo $calorie_goal; ?></p>
-                    <a class="third_child_a button" href="./index.php?action=edit_calorie_goal"><?php echo $button_text; ?></a>
+                    <div id="progress-bar" class="progress-bar" style="background-image: linear-gradient(90deg, #81c979 <?php echo $caloriePercent; ?>%, #413d47 <?php echo $caloriePercent; ?>%);"></div>
+                    <div class="calorie-goal-meta">
+                        <p id="total-calories" class="calorie-current"><?php echo $total_calories; ?></p>
+                        <a class="calorie-goal-button button" href="./index.php?action=edit_calorie_goal"><?php echo $button_text; ?></a>
+                        <p class="calorie-target"><?php echo $calorie_goal; ?></p>
+                    </div>
                 </div>
-                <p class="food_history">Food History</p>
-                <p>Food Name</p>
-                <p>Quantity</p>
-                <p>Calories</p><br>
-                
-                <a class="button addTo" href="./index.php?action=add_to_goal">Add to Goal</a>
-                <p class="food">Egg</p>
-                <p class="quantity">2</p>
-                <p class="calories">148</p><br>
 
-                <a class="button addTo" href="./index.php?action=add_to_goal">Add to Goal</a>
-                <p class="food">Bacon</p>
-                <p class="quantity">5</p>
-                <p class="calories">135</p><br>
-                
-                <a class="button addTo" href="./index.php?action=add_to_goal">Add to Goal</a>
-                <p class="food">Strawberry</p>
-                <p class="quantity">1</p>
-                <p class="calories">6</p><br>
+                <?php if (!empty($flash_error)): ?>
+                    <p class="home-error"><?php echo htmlspecialchars($flash_error); ?></p>
+                <?php endif; ?>
+
+                <div class="food-history-block">
+                    <p class="food_history">Food History</p>
+                    <?php if (empty($foods)): ?>
+                        <p class="food-empty">No foods added yet. Search for food and click Add.</p>
+                    <?php else: ?>
+                        <div class="food-list" id="food-list">
+                            <div class="food-row food-row-header">
+                                <span class="food-col-img" aria-hidden="true"></span>
+                                <span class="food-col-name">Food Name</span>
+                                <span class="food-col-qty">Servings</span>
+                                <span class="food-col-cal">Calories</span>
+                                <span class="food-col-delete" aria-hidden="true"></span>
+                            </div>
+                            <?php foreach ($foods as $food):
+                                $qty_display = ($food->servings == (int) $food->servings)
+                                    ? (int) $food->servings
+                                    : $food->servings;
+                            ?>
+                                <div class="food-row" data-food-entry-id="<?php echo $food->id; ?>">
+                                    <span class="food-col-img">
+                                        <?php echo food_thumb_html($food->foodName, $food->imageUrl, $food->category); ?>
+                                    </span>
+                                    <span class="food-col-name" title="<?php echo htmlspecialchars($food->foodName); ?>">
+                                        <span class="food-name-text"><?php echo htmlspecialchars($food->foodName); ?></span>
+                                        <?php if ($food->servingSize !== ''): ?>
+                                            <span class="food-serving-size-text">Serving: <?php echo htmlspecialchars($food->servingSize); ?></span>
+                                        <?php endif; ?>
+                                    </span>
+                                    <span class="food-col-qty">
+                                        <input
+                                            type="number"
+                                            class="servings-edit"
+                                            data-entry-id="<?php echo $food->id; ?>"
+                                            data-calories-per-serving="<?php echo $food->caloriesPerServing; ?>"
+                                            value="<?php echo $qty_display; ?>"
+                                            min="0.25"
+                                            step="0.25"
+                                            aria-label="Servings for <?php echo htmlspecialchars($food->foodName); ?>"
+                                        >
+                                    </span>
+                                    <span class="food-col-cal food-calories-value"><?php echo $food->calories; ?></span>
+                                    <span class="food-col-delete">
+                                        <button type="button" class="delete-entry-btn" data-entry-id="<?php echo $food->id; ?>" aria-label="Remove <?php echo htmlspecialchars($food->foodName); ?>">×</button>
+                                    </span>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </section>
         </main>
+        <?php if (!empty($foods)): ?>
+            <script src="./scripts/homeFood.js"></script>
+        <?php endif; ?>
         <?php include('./view/footer.php');?>
     </body>
 </html>

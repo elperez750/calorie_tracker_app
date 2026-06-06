@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>The Guitar Shop</title>
+        <title>Calorie Tracker</title>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="/CalorieTracker/styles/main.css"/>
     </head>
