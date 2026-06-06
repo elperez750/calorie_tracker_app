@@ -18,6 +18,7 @@ def search():
     token = get_access_token()
     search_response = search_foods(token, query)
     foods = normalize_food_list(search_response)
+    print(foods)
     return jsonify({"foods": foods})
 
 

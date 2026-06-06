@@ -1,70 +1,55 @@
-section{
-    margin-top: 60px;
+section {
+    padding: 20px 24px;
+    margin-top: 20px;
     margin-bottom: 40px;
 }
 
-label{
-    font-size: 30px;
-    color: #e2e1e1;
-    margin-left: 140px;
+section form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
 }
 
-.minCalLabel{
-    position: absolute;
-    transform: translateY(-45px);
-    left:25px;
-}
-
-.minCalInputBox{
-    position: absolute;
-    transform: translateY(-50px);
-    left: 248px;
-    height: 40px;
-    width: 50px;
-}
-
-section form p{
-    position: absolute;
-    transform: translateY(-45px);
-    left: 320px;
-}
-
-.maxCalInputBox{
-    position: absolute;
-    transform: translateY(-50px);
-    left: 365px;
-    height: 40px;
-    width: 50px;
-}
-
-.maxCalLabel{
-    position: absolute;
-    transform: translateY(-45px);
-    left:295px;
-}
-
-.searchInputBox{
-    font-size: 15px;
-    height: 30px;
-    width: 300px;
-}
-
-.submitButton{
-    display: inline-block;
+label {
     font-size: 20px;
-    padding-top: 10px;
-    padding-bottom: 6px;
-    text-align: center;
-    width:  80px;
+    color: #e2e1e1;
+}
+
+.minCalInputBox,
+.maxCalInputBox {
+    height: 36px;
+    width: 80px;
+    font-size: 15px;
+}
+
+section form p {
+    font-size: 18px;
+    color: #e2e1e1;
+    position: static;
+    transform: none;
+}
+
+.searchInputBox {
+    font-size: 15px;
+    height: 36px;
+    width: 300px;
+    max-width: 100%;
+}
+
+.submitButton {
+    font-size: 16px;
+    padding: 8px 16px;
     background-color: #45464d;
     border: 2px solid black;
-    margin-left: 10px;
     color: #bcc4cf;
+    cursor: pointer;
 }
 
-.submitButton:hover, a:focus{
+.submitButton:hover {
     background-color: lightblue;
-    color:#2880b9;
+    color: #2880b9;
 }
 
 label, input {
@@ -72,39 +57,70 @@ label, input {
 }
 
 #search-results {
-    margin-top: 30px;
-    padding: 0 20px;
+    padding: 0 24px 24px;
 }
 
 .food-result {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 12px 20px;
+    gap: 12px;
+    padding: 12px 16px;
     margin-bottom: 8px;
     background-color: #45464d;
     border-radius: 4px;
     color: #e2e1e1;
 }
 
-.button.addTo{
-    left: 320px;
-    transform: translateY(-1px);
+/* override main.css which sets position: absolute on .addTo.button */
+.button.addTo {
+    position: static;
+    transform: none;
+    flex: 0 0 auto;
+    padding: 6px 12px;
+    width: auto;
 }
 
 .food-name {
-    margin-left: 125px;
+    flex: 1;
+    text-align: center;
     font-size: 18px;
 }
 
 .food-calories {
+    flex: 0 0 auto;
     font-size: 18px;
     color: #bcc4cf;
+    min-width: 80px;
+    text-align: right;
 }
 
 .search-status {
     color: #bcc4cf;
     font-size: 18px;
-    margin-left: 20px;
+    padding: 10px;
 }
 
+@media (max-width: 600px) {
+    section form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .searchInputBox {
+        width: 100%;
+    }
+
+    .food-result {
+        flex-wrap: wrap;
+    }
+
+    .food-name {
+        text-align: left;
+        width: 100%;
+        order: -1;
+    }
+
+    .food-calories {
+        min-width: auto;
+    }
+}
